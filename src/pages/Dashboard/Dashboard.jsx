@@ -13,7 +13,7 @@ const Dashboard = () => {
   const handleDetailsTodo = (todoObj, index) => {
     console.log(todoObj);
     dispatch(todoActions.handleSelectedTodo(todoObj));
-    dispatch(todoActions.handleIndexArray(index))
+    dispatch(todoActions.handleIndexArray(index));
     navigate(`/todo/${todoObj.id}`);
   };
 
@@ -28,9 +28,7 @@ const Dashboard = () => {
         `http://localhost:3000/users/${currentLogin}`
       );
       const users = await response.json();
-      console.log(users.todo);
       if (users.todo !== undefined) {
-        console.log("entrou");
         dispatch(todoActions.handleUpdateTodoList(users.todo));
       } else {
         console.log("erro");
@@ -50,14 +48,13 @@ const Dashboard = () => {
       category: "",
       id: Math.random(),
     };
-    console.log(currentLogin)
-
+    console.log(currentLogin);
 
     fetch(`http://localhost:3000/users/${currentLogin}`)
       .then((response) => response.json())
       .then((user) => {
         user.todo.push(newList);
-        console.log(user)
+        console.log(user);
         return fetch(`http://localhost:3000/users/${currentLogin}`, {
           method: "PATCH",
           headers: {
