@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import AddComponent from "../../components/AddComponent/AddComponent";
+import { todoActions } from "../../store/todo/todoSlice";
 
 const TodoDetails = () => {
   const [isFetching, setIsFetching] = useState(true);
@@ -13,7 +14,8 @@ const TodoDetails = () => {
   useEffect(() => {
     // dispatch(todoActions.handleGetTodoDetails(todoId));
     setIsFetching(false);
-  }, [dispatch, todoId]);
+  }, [dispatch]);
+
 
   return (
     <>
