@@ -74,7 +74,7 @@ const TodoDetails = () => {
             </div>
 
             <AddComponent />
-            <CategoryComponent />
+            <CategoryComponent valueSelected={todoSelected.category} />
           </section>
         </section>
       )}
