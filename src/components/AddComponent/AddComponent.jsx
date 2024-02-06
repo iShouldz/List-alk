@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -9,7 +11,7 @@ const schema = yup
   })
   .required();
 
-const AddComponent = ({ actionButton }) => {
+const AddComponent = ({ actionButton}) => {
   const currentLogin = useSelector((state) => state.login.currentLogin);
 
   const {

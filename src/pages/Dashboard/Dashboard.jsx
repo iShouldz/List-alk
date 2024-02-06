@@ -11,8 +11,8 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   const handleDetailsTodo = (todoObj) => {
-    console.log(todoObj)
-    dispatch(todoActions.handleSelectedTodo(todoObj))
+    console.log(todoObj);
+    dispatch(todoActions.handleSelectedTodo(todoObj));
     navigate(`/todo/${todoObj.id}`);
   };
 
@@ -41,6 +41,58 @@ const Dashboard = () => {
     //
   };
 
+  const handleNewTodo = () => {
+    const newList = {
+      name: "Dummy list",
+      description: "Dummy description",
+      todoItems: ["This is a new list"],
+      category: "",
+      id: Math.random(),
+    };
+    console.log(currentLogin)
+
+
+    fetch(`http://localhost:3000/users/${currentLogin}`)
+      .then((response) => response.json())
+      .then((user) => {
+        user.todo.push(newList);
+        console.log(user)
+        return fetch(`http://localhost:3000/users/${currentLogin}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ todo: user.todo }),
+        });
+      })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Erro:", error));
+
+    // fetch(`http://localhost:3000/users/${currentLogin}`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+
+    //   body: JSON.stringify(newList),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     if (data.id) {
+    //       console.log("Form submitted successfully");
+    //     } else {
+    //       throw new Error("Failed to submit form");
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error("Form submission error:", error);
+    //   });
+    dispatch(todoActions.handleSelectedTodo(newList));
+    navigate(`/todo/${newList.id}`);
+  };
+
   return (
     <>
       {!isFetching && (
@@ -65,7 +117,7 @@ const Dashboard = () => {
             })
           )}
 
-          <button onClick={() => navigate("/newTodo")}>Add new list</button>
+          <button onClick={handleNewTodo}>Add new list</button>
         </>
       )}
     </>
