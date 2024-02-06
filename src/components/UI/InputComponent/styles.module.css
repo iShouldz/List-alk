@@ -1,0 +1,37 @@
+#input {
+  border: none;
+  width: 858px;
+  height: 54px;
+  padding: 16px 32px 16px 16px;
+  border-radius: 6px;
+  gap: 10px;
+  padding: 0;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0px;
+  padding-left: 15px;
+  color: #8d9396;
+  display: flex;
+}
+
+#label {
+  font-family: Inter;
+  font-weight: 500;
+}
+
+#input::placeholder {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0px;
+  text-align: left;
+  /* padding: 15px; */
+  color: #8d9396;
+}
+
+#span {
+  color: red;
+}
