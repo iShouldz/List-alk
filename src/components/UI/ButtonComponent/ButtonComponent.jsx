@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import styles from './styles.module.css'
 
-const ButtonComponent = ({children, color, ...props}) => {
+const ButtonComponent = ({children, color, width, ...props}) => {
   return (
-    <button {...props} id={styles.btnLogin} style={{backgroundColor: color}}>
+    <button {...props} id={styles.btnLogin} style={{backgroundColor: color, width: width}}>
         {children}
     </button>
   )
