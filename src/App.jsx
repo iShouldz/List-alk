@@ -6,7 +6,6 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import TodoDetails from "./pages/TodoDetails/TodoDetails";
 import Signup from "./pages/Signup/signup";
 import Login from "./pages/Login/Login";
-import NewTodo from "./pages/NewTodo/NewTodo";
 
 function App() {
   const router = createBrowserRouter([
@@ -19,7 +18,7 @@ function App() {
         { path: "/todo/:id", element: <TodoDetails /> },
         { path: "/signup", element: <Signup /> },
         { path: "/login", element: <Login /> },
-        { path: "/newTodo", element: <NewTodo /> },
+
       ],
     },
   ]);
