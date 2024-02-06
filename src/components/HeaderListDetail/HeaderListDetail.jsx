@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useSelector } from "react-redux";
+import styles from './styles.module.css'
 
 const schema = yup
   .object({
@@ -51,10 +52,10 @@ const HeaderListDetail = ({ title, description }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(handleUpdateHeader)}>
-      <input type="text" placeholder={title} {...register("name")}/>
+    <form onSubmit={handleSubmit(handleUpdateHeader)} className={styles.HeaderListDetail}>
+      <input type="text" placeholder={title} {...register("name")} id={styles.title} />
 
-      <input type="text" placeholder={description} {...register("description")} />
+      <input type="text" placeholder={description} {...register("description")} id={styles.description}/>
 
       <button type="submit">Change</button>
     </form>
