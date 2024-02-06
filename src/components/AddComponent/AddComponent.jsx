@@ -13,6 +13,7 @@ const schema = yup
 
 const AddComponent = ({ actionButton}) => {
   const currentLogin = useSelector((state) => state.login.currentLogin);
+  const indexArray = useSelector((state) => state.todo.todoArraySelected)
 
   const {
     register,
@@ -28,7 +29,7 @@ const AddComponent = ({ actionButton}) => {
     fetch(`http://localhost:3000/users/${currentLogin}`)
       .then((response) => response.json())
       .then((user) => {
-        user.todo[0].todoItems.push(newItem);
+        user.todo[indexArray].todoItems.push(newItem);
         console.log(user)
         return fetch(`http://localhost:3000/users/${currentLogin}`, {
           method: "PATCH",

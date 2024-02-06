@@ -10,9 +10,10 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleDetailsTodo = (todoObj) => {
+  const handleDetailsTodo = (todoObj, index) => {
     console.log(todoObj);
     dispatch(todoActions.handleSelectedTodo(todoObj));
+    dispatch(todoActions.handleIndexArray(index))
     navigate(`/todo/${todoObj.id}`);
   };
 
@@ -68,27 +69,6 @@ const Dashboard = () => {
       .then((response) => response.json())
       .then((data) => console.log(data))
       .catch((error) => console.error("Erro:", error));
-
-    // fetch(`http://localhost:3000/users/${currentLogin}`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-
-    //   body: JSON.stringify(newList),
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     if (data.id) {
-    //       console.log("Form submitted successfully");
-    //     } else {
-    //       throw new Error("Failed to submit form");
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.error("Form submission error:", error);
-    //   });
     dispatch(todoActions.handleSelectedTodo(newList));
     navigate(`/todo/${newList.id}`);
   };
@@ -105,11 +85,11 @@ const Dashboard = () => {
           {todoList.length === 0 ? (
             <h2>Nothing to show, create a new list!</h2>
           ) : (
-            todoList.map((todoObj) => {
+            todoList.map((todoObj, index) => {
               return (
                 <button
                   key={todoObj.listName}
-                  onClick={() => handleDetailsTodo(todoObj)}
+                  onClick={() => handleDetailsTodo(todoObj, index)}
                 >
                   {todoObj.name}
                 </button>
