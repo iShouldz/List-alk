@@ -8,6 +8,7 @@ import InputComponent from "../../components/UI/InputComponent/InputComponent";
 import ButtonComponent from "../../components/UI/ButtonComponent/ButtonComponent";
 import styles from "./styles.module.css";
 import TextAuth from "../../components/UI/TextAuth/TextAuth";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup
   .object({
@@ -25,6 +26,7 @@ const Login = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -40,6 +42,7 @@ const Login = () => {
       if (user) {
         dispatch(loginActions.handleSetCurrentLogin(user.id));
         dispatch(loginActions.handleSetCurrentUsername(user.username));
+        navigate("/")
       } else {
         console.log("erro");
       }

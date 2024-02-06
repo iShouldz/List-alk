@@ -6,6 +6,7 @@ import styles from "./styles.module.css";
 import ButtonComponent from "../../components/UI/ButtonComponent/ButtonComponent";
 import InputComponent from "../../components/UI/InputComponent/InputComponent";
 import TextAuth from "../../components/UI/TextAuth/TextAuth";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup
   .object({
@@ -25,6 +26,7 @@ const Signup = () => {
     resolver: yupResolver(schema),
   });
 
+  const navigate = useNavigate();
   const handleRegister = (data) => {
     console.log(data);
     const { username, email, password } = data;
@@ -49,6 +51,7 @@ const Signup = () => {
         console.log(data);
         if (data.id) {
           console.log("Form submitted successfully");
+          navigate("/")
         } else {
           throw new Error("Failed to submit form");
         }
