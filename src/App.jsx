@@ -4,7 +4,7 @@ import Home from "./pages/Home/Home";
 import Root from "./pages/Root/Root";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import TodoDetails from "./pages/TodoDetails/TodoDetails";
-import Signup from "./pages/Signup/signup";
+import Signup from "./pages/Signup/Signup";
 import Login from "./pages/Login/Login";
 
 function App() {
