@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { todoActions } from "../../store/todo/todoSlice";
+import ButtonComponent from "../../components/UI/ButtonComponent/ButtonComponent";
+import TextAuth from "../../components/UI/TextAuth/TextAuth";
+import styles from './styles.module.css'
 
 const Dashboard = () => {
   const todoList = useSelector((state) => state.todo.todoList);
@@ -73,29 +76,35 @@ const Dashboard = () => {
   return (
     <>
       {!isFetching && (
-        <>
-          <section>
-            <h1>Your lists</h1>
-            <p>All in one place</p>
-          </section>
-
+        <section className={styles.dashboardContainer}>
+          <TextAuth h1="Your lists" h3="All in one place" />
+         
+         {/*filtro */}
           {todoList.length === 0 ? (
             <h2>Nothing to show, create a new list!</h2>
           ) : (
-            todoList.map((todoObj, index) => {
-              return (
-                <button
-                  key={todoObj.listName}
-                  onClick={() => handleDetailsTodo(todoObj, index)}
-                >
-                  {todoObj.name}
-                </button>
-              );
-            })
+            <section className={styles.todoItensContainer}>
+              {todoList.map((todoObj, index) => {
+                return (
+                  <ButtonComponent
+                    width="322px"
+                    height="68px"
+                    color="#D9D9D961"
+                    className={styles.TodoItem}
+                    key={todoObj.listName}
+                    onClick={() => handleDetailsTodo(todoObj, index)}
+                  >
+                    {todoObj.name}
+                  </ButtonComponent>
+                );
+              })}
+            </section>
           )}
 
-          <button onClick={handleNewTodo}>Add new list</button>
-        </>
+          <ButtonComponent onClick={handleNewTodo} color="#FF9F1C">
+            Add new list
+          </ButtonComponent>
+        </section>
       )}
     </>
   );

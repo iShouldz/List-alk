@@ -1,0 +1,17 @@
+.todoItensContainer{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Cria 3 colunas iguais */
+    gap: 10px; 
+}
+
+.dashboardContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 270px;
+    padding-top: 0;
+}
+
+.TodoItem{
+    margin: 20px
+}
