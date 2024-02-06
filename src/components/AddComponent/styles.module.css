@@ -1,0 +1,9 @@
+.AddComponent {
+  padding: 50px;
+}
+
+.formContainer {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px
+}

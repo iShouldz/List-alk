@@ -8,6 +8,7 @@ import { todoActions } from "../../store/todo/todoSlice";
 import InputComponent from "../../components/UI/InputComponent/InputComponent";
 import styles from "./styles.module.css";
 import ButtonComponent from "../UI/ButtonComponent/ButtonComponent";
+import check from "../../assets/check.svg";
 
 const schema = yup
   .object({
@@ -56,8 +57,11 @@ const AddComponent = ({ actionButton }) => {
   };
 
   return (
-    <section>
-      <form onSubmit={handleSubmit(handleSubmitAdd)}>
+    <section className={styles.AddComponent}>
+      <form
+        onSubmit={handleSubmit(handleSubmitAdd)}
+        className={styles.formContainer}
+      >
         <InputComponent
           name="newItem"
           label="New item: "
@@ -66,12 +70,15 @@ const AddComponent = ({ actionButton }) => {
           type="text"
           control={control}
         />
-        <ButtonComponent color="#FF1C1CA8">Cancel</ButtonComponent>
-        <ButtonComponent color="#FF9F1C">Save list</ButtonComponent>
+        {/* <ButtonComponent color="#FF1C1CA8">
+          Cancel
+        </ButtonComponent> */}
+        <ButtonComponent color="#FF9F1C" width="59px" height="54px" marginBottom ='3px'>
+          <img src={check} />
+        </ButtonComponent>
       </form>
     </section>
   );
-
 };
 
 export default AddComponent;
