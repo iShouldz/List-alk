@@ -5,6 +5,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { todoActions } from "../../store/todo/todoSlice";
+import InputComponent from "../../components/UI/InputComponent/InputComponent";
+import styles from "./styles.module.css";
+import ButtonComponent from "../UI/ButtonComponent/ButtonComponent";
 
 const schema = yup
   .object({
@@ -15,19 +18,19 @@ const schema = yup
 const AddComponent = ({ actionButton }) => {
   const currentLogin = useSelector((state) => state.login.currentLogin);
   const indexArray = useSelector((state) => state.todo.todoArraySelected);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    control,
   } = useForm({
     resolver: yupResolver(schema),
   });
 
   const handleSubmitAdd = (data) => {
     const { newItem } = data;
-    
 
     fetch(`http://localhost:3000/users/${currentLogin}`)
       .then((response) => response.json())
@@ -45,7 +48,7 @@ const AddComponent = ({ actionButton }) => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        console.log(data.todo[indexArray])
+        console.log(data.todo[indexArray]);
         dispatch(todoActions.handleUpdateTodoList(data.todo));
         dispatch(todoActions.handleSelectedTodo(data.todo[indexArray]));
       })
@@ -55,16 +58,20 @@ const AddComponent = ({ actionButton }) => {
   return (
     <section>
       <form onSubmit={handleSubmit(handleSubmitAdd)}>
-        <label>
-          New item
-          <input type="text" {...register("newItem")} />
-        </label>
-
-        <button>Cancel</button>
-        <button>Save list</button>
+        <InputComponent
+          name="newItem"
+          label="New item: "
+          placeholder="Enter your another item yo your list"
+          border="2px solid #FF9F1C5E"
+          type="text"
+          control={control}
+        />
+        <ButtonComponent color="#FF1C1CA8">Cancel</ButtonComponent>
+        <ButtonComponent color="#FF9F1C">Save list</ButtonComponent>
       </form>
     </section>
   );
+
 };
 
 export default AddComponent;
