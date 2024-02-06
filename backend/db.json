@@ -1,0 +1,60 @@
+{
+  "users": [
+    {
+      "id": "011d",
+      "username": "teste",
+      "email": "teste@gmail.com",
+      "password": "admin",
+      "todo": [
+        {
+          "name": "Lista de estudos",
+          "description": "Lista de estudos de Pedro",
+          "todoItems": [
+            "Eu tenho que estudar AWS",
+            "Eu tenho que montar o resumo para o seminario",
+            "Eu tenho que ir jantar"
+          ],
+          "category": "hobbies",
+          "id": 0.3975498275253484
+        },
+        {
+          "name": "testetaaa",
+          "description": "testey",
+          "todoItems": [
+            "This is a new list"
+          ],
+          "category": "livros",
+          "id": 0.6426109997637213
+        },
+        {
+          "name": "Echinocereus Cactus",
+          "description": "dsads",
+          "todoItems": [
+            "This is a new list"
+          ],
+          "category": "filmes",
+          "id": 0.8012424285547897
+        },
+        {
+          "name": "RAILS_SECRET_KEY",
+          "description": "This is a list I made of the best Star Wars movies. ",
+          "todoItems": [
+            "This is a new list",
+            "sexo"
+          ],
+          "category": "receitas",
+          "id": 0.63151301671419
+        },
+        {
+          "name": "Dummy list",
+          "description": "Dummy description",
+          "todoItems": [
+            "This is a new list"
+          ],
+          "category": "",
+          "id": 0.8078897447513236
+        }
+      ]
+    }
+  ]
+}
