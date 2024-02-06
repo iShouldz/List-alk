@@ -64,10 +64,10 @@ const Login = () => {
           control={control}
         />
         <InputComponent
-          type="text"
           label="Password"
           name="password"
-          laceholder="Enter a strong password"
+          type="password"
+          placeholder="Enter a strong password"
           control={control}
         />
 
