@@ -4,12 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { todoActions } from "../../store/todo/todoSlice";
 import ButtonComponent from "../../components/UI/ButtonComponent/ButtonComponent";
 import TextAuth from "../../components/UI/TextAuth/TextAuth";
-import styles from './styles.module.css'
+import filter from "../../assets/Filter.svg";
+import styles from "./styles.module.css";
 
 const Dashboard = () => {
   const todoList = useSelector((state) => state.todo.todoList);
   const currentLogin = useSelector((state) => state.login.currentLogin);
   const [isFetching, setIsFetching] = useState(true);
+  const [categoriaSelecionada, setCategoriaSelecionada] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -73,18 +75,44 @@ const Dashboard = () => {
     navigate(`/todo/${newList.id}`);
   };
 
+  const listaFiltrada = todoList.filter((todoObj) => {
+    if (categoriaSelecionada === "all") return todoObj;
+    return !categoriaSelecionada || todoObj.category === categoriaSelecionada;
+  });
+
   return (
     <>
       {!isFetching && (
         <section className={styles.dashboardContainer}>
-          <TextAuth h1="Your lists" h3="All in one place" />
-         
-         {/*filtro */}
-          {todoList.length === 0 ? (
+          <div className={styles.headerDashboard}>
+            <TextAuth h1="Your lists" h3="All in one place" />
+
+            <div className={styles.filterContainer}>
+              <img src={filter} alt="filter icon" />
+              <select
+                name="choice"
+                className={styles.selectComponent}
+                value={categoriaSelecionada}
+                onChange={(e) => setCategoriaSelecionada(e.target.value)}
+              >
+                <option value="all">All</option>
+                <option value="filmes">Filmes</option>
+                <option value="musicas">Músicas</option>
+                <option value="livros">Livros</option>
+                <option value="series">Séries</option>
+                <option value="viagens">Viagens</option>
+                <option value="receitas">Receitas</option>
+                <option value="exercicios">Exercícios</option>
+                <option value="hobbies">Hobbies</option>
+              </select>
+            </div>
+          </div>
+
+          {listaFiltrada.length === 0 ? (
             <h2>Nothing to show, create a new list!</h2>
           ) : (
             <section className={styles.todoItensContainer}>
-              {todoList.map((todoObj, index) => {
+              {listaFiltrada.map((todoObj, index) => {
                 return (
                   <ButtonComponent
                     width="322px"
@@ -101,9 +129,11 @@ const Dashboard = () => {
             </section>
           )}
 
-          <ButtonComponent onClick={handleNewTodo} color="#FF9F1C">
-            Add new list
-          </ButtonComponent>
+          <div style={{ display: "flex", justifyContent: "flex-end", paddingTop: '80px' }}>
+            <ButtonComponent onClick={handleNewTodo} color="#FF9F1C">
+              Add new list
+            </ButtonComponent>
+          </div>
         </section>
       )}
     </>
