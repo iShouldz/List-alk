@@ -32,7 +32,7 @@
 }
 
 #description:focus {
-  outline: none; /* Remove a borda em foco */
+  outline: none; 
 }
 
 #description {

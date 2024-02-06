@@ -28,7 +28,7 @@ const HeaderListDetail = ({ title, description }) => {
 
   const handleUpdateHeader = (data) => {
     const {name, description} = data
-
+    console.log(data)
     fetch(`http://localhost:3000/users/${currentLogin}`)
     .then((response) => response.json())
     .then((user) => {
@@ -51,13 +51,19 @@ const HeaderListDetail = ({ title, description }) => {
     .catch((error) => console.error("Erro:", error));
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSubmit(handleUpdateHeader)();
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit(handleUpdateHeader)} className={styles.HeaderListDetail}>
-      <input type="text" placeholder={title} {...register("name")} id={styles.title} />
+      <input type="text" placeholder={title} {...register("name")} id={styles.title} onKeyPress={handleKeyPress} />
 
-      <input type="text" placeholder={description} {...register("description")} id={styles.description}/>
+      <input type="text" placeholder={description} {...register("description")} id={styles.description} onKeyPress={handleKeyPress}/>
 
-      <button type="submit">Change</button>
+      {/* <button type="submit">Change</button> */}
     </form>
   );
 };

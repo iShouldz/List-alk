@@ -54,6 +54,7 @@ const CategoryComponent = ({ valueSelected='filmes' }) => {
     <form
       onSubmit={handleSubmit(handleSubmitSelect)}
       className={styles.formSelect}
+      id="categoryForm"
     >
       <label id={styles.label}>Category:</label>
       <select
@@ -72,8 +73,6 @@ const CategoryComponent = ({ valueSelected='filmes' }) => {
         <option value="exercicios">Exercícios</option>
         <option value="hobbies">Hobbies</option>
       </select>
-
-      <button type="submit">submit</button>
     </form>
   );
 };
