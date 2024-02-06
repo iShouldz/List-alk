@@ -9,20 +9,19 @@ import { todoActions } from "../../store/todo/todoSlice";
 import CategoryComponent from "../../components/CategoryComponent/CategoryComponent";
 
 const TodoDetails = () => {
-  const [isFetching, setIsFetching] = useState(true);
+  const [isFetching, setIsFetching] = useState(false);
   const dispatch = useDispatch();
   const todoSelected = useSelector((state) => state.todo.todoSelected);
   const currentLogin = useSelector((state) => state.login.currentLogin);
   const indexArray = useSelector((state) => state.todo.todoArraySelected);
 
-
   // const { id } = useParams();
   // const todoId = parseInt(id);
 
-  useEffect(() => {
-    // dispatch(todoActions.handleGetTodoDetails(todoId));
-    setIsFetching(false);
-  }, [dispatch]);
+  // useEffect(() => {
+  //   // dispatch(todoActions.handleGetTodoDetails(todoId));
+  //   setIsFetching(false);
+  // }, [dispatch]);
 
   const deleteItem = (index) => {
     fetch(`http://localhost:3000/users/${currentLogin}`)
@@ -47,6 +46,9 @@ const TodoDetails = () => {
       })
       .catch((error) => console.error("Erro:", error));
   };
+
+  const handleRed = () => {};
+
   return (
     <>
       {!isFetching && (
@@ -72,9 +74,21 @@ const TodoDetails = () => {
                 );
               })}
             </div>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div>
+                <AddComponent />
+                <CategoryComponent valueSelected={todoSelected.category} />
+              </div>
 
-            <AddComponent />
-            <CategoryComponent valueSelected={todoSelected.category} />
+              <section className={styles.btnContainer}>
+                <ButtonComponent color="#FF1C1CA8" onClick={handleRed}>
+                  {todoSelected.name === 'Dummy list' ? 'Cancel': 'Delete list'}
+                </ButtonComponent>
+                <ButtonComponent color="#FF9F1C" form="categoryForm" type="submit">
+                  Save list
+                </ButtonComponent>
+              </section>
+            </div>
           </section>
         </section>
       )}
