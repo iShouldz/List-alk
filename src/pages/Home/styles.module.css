@@ -1,0 +1,27 @@
+.homeContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15%;
+  margin-right: 15%;
+
+}
+
+#h1 {
+  font-family: "Jost", sans-serif;
+  font-size: 128px;
+  font-weight: 700;
+  color: #ff9f1c;
+  font-weight: 700;
+}
+
+#p {
+  font-family: Jost;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 44px;
+
+  color: #ff9f1c;
+
+  text-align: left;
+}

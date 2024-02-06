@@ -1,0 +1,64 @@
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+#btnLogin {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0px;
+  text-align: center;
+  background: #ffe8d6;
+  width: 140px;
+  height: 50px;
+  padding: 14px, 34px, 14px, 34px;
+  border-radius: 6px;
+}
+
+#btnRegister {
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0px;
+  text-align: center;
+
+  width: 140px;
+  height: 50px;
+  padding: 14px, 34px, 14px, 34px;
+  border-radius: 6px;
+  background: #ffbf68;
+}
+
+.btnContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.linksContainer{
+    gap: 100px;
+    display: flex;
+}
+
+#links{
+    text-decoration: none;
+    color: inherit;
+    font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+}
