@@ -4,6 +4,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import { loginActions } from "../../store/login/loginSlice";
+import InputComponent from "../../components/UI/InputComponent/InputComponent";
+import ButtonComponent from "../../components/UI/ButtonComponent/ButtonComponent";
+import styles from "./styles.module.css";
+import TextAuth from "../../components/UI/TextAuth/TextAuth";
 
 const schema = yup
   .object({
@@ -17,6 +21,7 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
+    control,
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -44,24 +49,31 @@ const Login = () => {
   };
 
   return (
-    <section>
-      <form onSubmit={handleSubmit(handleLogin)}>
-        <label>
-          E-mail address
-          <input type="text" name="email" id="email" {...register("email")} />
-        </label>
+    <section className={styles.loginContainer}>
+      <TextAuth h1="Welcome back!" h3="Your organized world awaits..." />
 
-        <label>
-          Password
-          <input
-            type="password"
-            name="password"
-            id="password"
-            {...register("password")}
-          />
-        </label>
+      <form
+        onSubmit={handleSubmit(handleLogin)}
+        className={styles.formContainer}
+      >
+        <InputComponent
+          type="text"
+          name="email"
+          label="E-mail address"
+          placeholder="Enter your best e-mail"
+          control={control}
+        />
+        <InputComponent
+          type="text"
+          label="Password"
+          name="password"
+          laceholder="Enter a strong password"
+          control={control}
+        />
 
-        <button type="submit">Register</button>
+        <ButtonComponent type="submit" color="#FF9F1C">
+          Login
+        </ButtonComponent>
       </form>
     </section>
   );
