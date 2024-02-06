@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useSelector } from "react-redux";
 import styles from "./styles.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useState } from "react";
 
 const schema = yup
   .object({
@@ -11,9 +13,10 @@ const schema = yup
   })
   .required();
 
-const CategoryComponent = () => {
+const CategoryComponent = ({ valueSelected='filmes' }) => {
   const currentLogin = useSelector((state) => state.login.currentLogin);
   const indexArray = useSelector((state) => state.todo.todoArraySelected);
+  const [selected, setSelected] = useState(valueSelected)
 
   const {
     register,
@@ -23,10 +26,9 @@ const CategoryComponent = () => {
     resolver: yupResolver(schema),
   });
 
-
   const handleSubmitSelect = (data) => {
-    console.log(data)
-    const {select} = data
+    console.log(data);
+    const { select } = data;
     fetch(`http://localhost:3000/users/${currentLogin}`)
       .then((response) => response.json())
       .then((user) => {
@@ -49,9 +51,18 @@ const CategoryComponent = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(handleSubmitSelect)} className={styles.formSelect}>
+    <form
+      onSubmit={handleSubmit(handleSubmitSelect)}
+      className={styles.formSelect}
+    >
       <label id={styles.label}>Category:</label>
-      <select name="choice" className={styles.selectComponent} {...register("select", { required: true })}>
+      <select
+        name="choice"
+        className={styles.selectComponent}
+        {...register("select", { required: true })}
+        onChange={(e) => setSelected(e.target.value)}
+        value={selected}
+      >
         <option value="filmes">Filmes</option>
         <option value="musicas">Músicas</option>
         <option value="livros">Livros</option>
