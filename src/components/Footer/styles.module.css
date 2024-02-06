@@ -1,0 +1,39 @@
+.footerContainer{
+    display: flex;
+    font-family: Inter;
+    align-items: center;
+    justify-content: space-around;
+    height: 160px;
+    background: #FFE8D6;
+}
+
+.middleFooter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.middleSuperior{
+    display: flex;
+    gap: 30px
+}
+
+.middleInferior{
+    display: flex;
+    gap: 30px;
+    text-decoration: underline;
+}
+
+.logo{
+    display: flex;
+    gap: 30px
+}
+
+.logo > h1{
+    color: #FF9F1D;
+}
+.social{
+    display: flex;
+    gap: 10px;
+}
