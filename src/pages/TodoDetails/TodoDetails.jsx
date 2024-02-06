@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+/* eslint-disable no-unused-vars */
+import {useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { useParams } from "react-router-dom";
 import AddComponent from "../../components/AddComponent/AddComponent";
@@ -7,10 +8,12 @@ import ButtonComponent from "../../components/UI/ButtonComponent/ButtonComponent
 import styles from "./styles.module.css";
 import { todoActions } from "../../store/todo/todoSlice";
 import CategoryComponent from "../../components/CategoryComponent/CategoryComponent";
+import { useNavigate } from "react-router-dom";
 
 const TodoDetails = () => {
   const [isFetching, setIsFetching] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const todoSelected = useSelector((state) => state.todo.todoSelected);
   const currentLogin = useSelector((state) => state.login.currentLogin);
   const indexArray = useSelector((state) => state.todo.todoArraySelected);
@@ -47,7 +50,34 @@ const TodoDetails = () => {
       .catch((error) => console.error("Erro:", error));
   };
 
-  const handleRed = () => {};
+  const handleDeleteList = () => {
+    const itemId = todoSelected.id 
+    fetch(`http://localhost:3000/users/${currentLogin}`)
+      .then(response => response.json())
+      .then(user => {
+        const index = user.todo.findIndex(item => item.id === itemId);
+        if (index !== -1) {
+          user.todo.splice(index, 1);
+    
+          fetch(`http://localhost:3000/users/${currentLogin}`, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ todo: user.todo }),
+          })
+          .then(response => response.json())
+          .then(data => {
+            navigate("/dashboard")
+            console.log('Item excluído com sucesso:', data);
+          })
+          .catch(error => console.error('Erro ao excluir item:', error));
+        } else {
+          console.error('Item não encontrado');
+        }
+      })
+      .catch(error => console.error('Erro ao obter dados do usuário:', error));
+  };
 
   return (
     <>
@@ -81,10 +111,17 @@ const TodoDetails = () => {
               </div>
 
               <section className={styles.btnContainer}>
-                <ButtonComponent color="#FF1C1CA8" onClick={handleRed}>
-                  {todoSelected.name === 'Dummy list' ? 'Cancel': 'Delete list'}
+                <ButtonComponent color="#FF1C1CA8" onClick={handleDeleteList}>
+                  {todoSelected.name === "Dummy list"
+                    ? "Cancel"
+                    : "Delete list"}
                 </ButtonComponent>
-                <ButtonComponent color="#FF9F1C" form="categoryForm" type="submit">
+                <ButtonComponent
+                  color="#FF9F1C"
+                  form="categoryForm"
+                  type="submit"
+                  // }
+                >
                   Save list
                 </ButtonComponent>
               </section>

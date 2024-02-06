@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const schema = yup
   .object({
@@ -17,6 +18,7 @@ const CategoryComponent = ({ valueSelected='filmes' }) => {
   const currentLogin = useSelector((state) => state.login.currentLogin);
   const indexArray = useSelector((state) => state.todo.todoArraySelected);
   const [selected, setSelected] = useState(valueSelected)
+  const navigate = useNavigate()
 
   const {
     register,
@@ -48,6 +50,8 @@ const CategoryComponent = ({ valueSelected='filmes' }) => {
         console.log(data);
       })
       .catch((error) => console.error("Erro:", error));
+
+      navigate("/dashboard")
   };
 
   return (
