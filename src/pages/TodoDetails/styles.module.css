@@ -1,0 +1,11 @@
+.todoItemContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}
+
+.detailsContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 150px;
+}
