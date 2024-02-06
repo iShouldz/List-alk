@@ -7,6 +7,10 @@
 
 }
 
+.homeContainer > img{
+  width: 700px;
+}
+
 #h1 {
   font-family: "Jost", sans-serif;
   font-size: 128px;

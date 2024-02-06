@@ -65,7 +65,7 @@ const AddComponent = ({ actionButton }) => {
         <InputComponent
           name="newItem"
           label="New item: "
-          placeholder="Enter your another item yo your list"
+          placeholder="Enter your another item your list"
           border="2px solid #FF9F1C5E"
           type="text"
           control={control}

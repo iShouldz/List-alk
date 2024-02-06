@@ -6,6 +6,7 @@ import HeaderListDetail from "../../components/HeaderListDetail/HeaderListDetail
 import ButtonComponent from "../../components/UI/ButtonComponent/ButtonComponent";
 import styles from "./styles.module.css";
 import { todoActions } from "../../store/todo/todoSlice";
+import CategoryComponent from "../../components/CategoryComponent/CategoryComponent";
 
 const TodoDetails = () => {
   const [isFetching, setIsFetching] = useState(true);
@@ -73,6 +74,7 @@ const TodoDetails = () => {
             </div>
 
             <AddComponent />
+            <CategoryComponent />
           </section>
         </section>
       )}

@@ -8,4 +8,10 @@
     display: flex;
     flex-direction: column;
     padding: 150px;
+    padding-top: 70px;
+    gap: 20px
+}
+
+.todoItemContainer{
+    padding: 50px;
 }
