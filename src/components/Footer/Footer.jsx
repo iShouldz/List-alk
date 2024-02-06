@@ -3,7 +3,7 @@ import pencil from "../../assets/pencil.svg";
 import facebook from "../../assets/Facebook.svg";
 import instagram from "../../assets/Instagram.svg";
 import twitter from "../../assets/Twitter.svg";
-import linkedin from "../../assets/Linkedin.svg";
+import linkedin from "../../assets/LinkedIn.svg";
 
 const Footer = () => {
   return (
