@@ -4,6 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import styles from "./styles.module.css";
 import ButtonComponent from "../../components/UI/ButtonComponent/ButtonComponent";
+import InputComponent from "../../components/UI/InputComponent/InputComponent";
+import TextAuth from "../../components/UI/TextAuth/TextAuth";
 
 const schema = yup
   .object({
@@ -18,6 +20,7 @@ const Signup = () => {
     register,
     handleSubmit,
     formState: { errors },
+    control,
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -57,47 +60,34 @@ const Signup = () => {
 
   return (
     <section className={styles.signupContainer}>
-      <div className={styles.textRegister}>
-        <h1>Register Now</h1>
-        <h3>to be a part of the list world.</h3>
-      </div>
+     
+      <TextAuth h1="Register Now" h3="to be a part of the list world." />
 
       <form
         onSubmit={handleSubmit(handleRegister)}
         className={styles.formContainer}
       >
-        <label>
-          Username <span>*</span>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            {...register("username")}
-            placeholder="Enter your chosen username"
-          />
-        </label>
+        <InputComponent
+          label="Username"
+          name="username"
+          placeholder="Enter your chosen username"
+          control={control}
+        />
 
-        <label>
-          E-mail address <span>*</span>
-          <input
-            type="text"
-            name="email"
-            id="email"
-            {...register("email")}
-            placeholder="Enter your best e-mail"
-          />
-        </label>
+        <InputComponent
+          label="E-mail address"
+          placeholder="Enter your best e-mail"
+          name="email"
+          control={control}
+        />
 
-        <label>
-          Password <span>*</span>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            {...register("password")}
-            placeholder="Enter a strong password"
-          />
-        </label>
+        <InputComponent
+          label="Password"
+          placeholder="Enter a strong password"
+          type="password"
+          name="password"
+          control={control}
+        />
 
         <ButtonComponent type="submit" color="#FF9F1C">
           Register
