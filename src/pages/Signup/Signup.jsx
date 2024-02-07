@@ -51,7 +51,7 @@ const Signup = () => {
         console.log(data);
         if (data.id) {
           console.log("Form submitted successfully");
-          navigate("/")
+          navigate("/");
         } else {
           throw new Error("Failed to submit form");
         }
@@ -63,7 +63,6 @@ const Signup = () => {
 
   return (
     <section className={styles.signupContainer}>
-     
       <TextAuth h1="Register Now" h3="to be a part of the list world." />
 
       <form
@@ -77,12 +76,20 @@ const Signup = () => {
           control={control}
         />
 
+        {errors?.username?.message !== undefined && (
+          <p>{errors?.username?.message}</p>
+        )}
+
         <InputComponent
           label="E-mail address"
           placeholder="Enter your best e-mail"
           name="email"
           control={control}
         />
+
+        {errors?.email?.message !== undefined && (
+          <p>{errors?.email?.message}</p>
+        )}
 
         <InputComponent
           label="Password"
@@ -91,6 +98,10 @@ const Signup = () => {
           name="password"
           control={control}
         />
+
+        {errors?.password?.message !== undefined && (
+          <p>{errors?.password?.message}</p>
+        )}
 
         <ButtonComponent type="submit" color="#FF9F1C">
           Register

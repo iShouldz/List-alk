@@ -9,6 +9,7 @@ import ButtonComponent from "../../components/UI/ButtonComponent/ButtonComponent
 import styles from "./styles.module.css";
 import TextAuth from "../../components/UI/TextAuth/TextAuth";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const schema = yup
   .object({
@@ -18,6 +19,7 @@ const schema = yup
   .required();
 
 const Login = () => {
+  const [erroLogin, setErroLogin] = useState(null)
   const {
     register,
     handleSubmit,
@@ -42,15 +44,17 @@ const Login = () => {
       if (user) {
         dispatch(loginActions.handleSetCurrentLogin(user.id));
         dispatch(loginActions.handleSetCurrentUsername(user.username));
-        navigate("/")
+        navigate("/");
       } else {
         console.log("erro");
+        setErroLogin("Erro de credenciais")
       }
     } catch (error) {
       console.error("Login error:", error);
     }
   };
 
+  console.log(errors);
   return (
     <section className={styles.loginContainer}>
       <TextAuth h1="Welcome back!" h3="Your organized world awaits..." />
@@ -66,6 +70,10 @@ const Login = () => {
           placeholder="Enter your best e-mail"
           control={control}
         />
+
+        {errors?.email?.message !== undefined && (
+          <p>{errors?.email?.message}</p>
+        )}
         <InputComponent
           label="Password"
           name="password"
@@ -73,10 +81,14 @@ const Login = () => {
           placeholder="Enter a strong password"
           control={control}
         />
+        {errors?.password?.message !== undefined && (
+          <p>{errors?.password?.message}</p>
+        )}
 
         <ButtonComponent type="submit" color="#FF9F1C">
           Login
         </ButtonComponent>
+        {erroLogin}
       </form>
     </section>
   );
