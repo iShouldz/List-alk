@@ -1,0 +1,59 @@
+.aboutContainer > img{
+    width: 30%;
+    border-radius: 30px;
+}
+
+.aboutContainer > h1{
+    font-family: Inter;
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0px;
+    color: #FF9F1C
+}
+
+
+.textContainer > h2{
+    font-family: Inter;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0px;
+    color: #FF9F1C
+}
+
+.textContainer > h3{
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0px;
+}
+
+
+.textContainer > p{
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0px;
+    
+}
+
+
+.aboutContainer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+}
+
+.btnContainer{
+    display: flex;
+    gap: 10px
+}
+
+.textContainer{
+    width: 30%;
+    
+}
