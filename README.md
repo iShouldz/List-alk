@@ -6,7 +6,7 @@ Navegue para o front-end e execute:
 npm install 
 ```
 # Execução do sistema
-Execute dois terminais, para executar o frontend e backend. Para o backend, é utilizado o json-server que simula um back-end real para fins de facilitar um projeto frontend de estudo.
+Execute dois terminais, para executar o frontend e backend. Para o backend, é utilizado o json-server que simula um back-end real.
 
 1. Em um terminal, navegue ate a pasta do frontend e use o comando
 
