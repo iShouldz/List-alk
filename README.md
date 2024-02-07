@@ -6,7 +6,7 @@ Navegue para o front-end e execute:
 npm install 
 ```
 # Execução do sistema
-Execute dois terminais, para executar o frontend e backend. Para o backend, é utilizado o json-server que simula um back-end real para fins de facilitar um projeto frontend de estudo.
+Execute dois terminais, para executar o frontend e backend. Para o backend, é utilizado o json-server que simula um back-end real.
 
 1. Em um terminal, navegue ate a pasta do frontend e use o comando
 
@@ -28,7 +28,7 @@ npx json-server --watch db.json
 
 # Deploy
 
-Deploy realizado na plataforma [Vercel](https://vercel.com/) para fins de demonstração do projeto. É necessario estar com o backend rodando na sua maquina para funcionar corretamente. Em implementações futuras, o deploy sera ajustado com um deploy exclusivo para o backend.
+Deploy realizado na plataforma [Vercel](https://vercel.com/) para fins de demonstração do projeto. Para uso, existe uma conta setada para facilitar a experimentação: login: teste@gmail.com; senha: admin.
 
 # Recursos
 1. [React](https://react.dev)
