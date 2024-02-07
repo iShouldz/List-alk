@@ -27,12 +27,12 @@ const TodoDetails = () => {
   // }, [dispatch]);
 
   const deleteItem = (index) => {
-    fetch(`http://localhost:3000/users/${currentLogin}`)
+    fetch(`https://json-server-liskalk.vercel.app/users/${currentLogin}`)
       .then((response) => response.json())
       .then((user) => {
         user.todo[indexArray].todoItems.splice(index, 1);
         console.log(user);
-        return fetch(`http://localhost:3000/users/${currentLogin}`, {
+        return fetch(`https://json-server-liskalk.vercel.app/users/${currentLogin}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -52,14 +52,14 @@ const TodoDetails = () => {
 
   const handleDeleteList = () => {
     const itemId = todoSelected.id 
-    fetch(`http://localhost:3000/users/${currentLogin}`)
+    fetch(`https://json-server-liskalk.vercel.app/users/${currentLogin}`)
       .then(response => response.json())
       .then(user => {
         const index = user.todo.findIndex(item => item.id === itemId);
         if (index !== -1) {
           user.todo.splice(index, 1);
     
-          fetch(`http://localhost:3000/users/${currentLogin}`, {
+          fetch(`https://json-server-liskalk.vercel.app/users/${currentLogin}`, {
             method: 'PATCH',
             headers: {
               'Content-Type': 'application/json',

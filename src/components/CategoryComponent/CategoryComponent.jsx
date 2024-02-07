@@ -31,13 +31,13 @@ const CategoryComponent = ({ valueSelected='filmes' }) => {
   const handleSubmitSelect = (data) => {
     console.log(data);
     const { select } = data;
-    fetch(`http://localhost:3000/users/${currentLogin}`)
+    fetch(`https://json-server-liskalk.vercel.app/users/${currentLogin}`)
       .then((response) => response.json())
       .then((user) => {
         console.log(user);
         user.todo[indexArray].category = select;
 
-        return fetch(`http://localhost:3000/users/${currentLogin}`, {
+        return fetch(`https://json-server-liskalk.vercel.app/users/${currentLogin}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",

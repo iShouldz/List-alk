@@ -29,13 +29,13 @@ const HeaderListDetail = ({ title, description }) => {
   const handleUpdateHeader = (data) => {
     const {name, description} = data
     console.log(data)
-    fetch(`http://localhost:3000/users/${currentLogin}`)
+    fetch(`https://json-server-liskalk.vercel.app/users/${currentLogin}`)
     .then((response) => response.json())
     .then((user) => {
       console.log(user);
       user.todo[indexArray].name = name;
       user.todo[indexArray].description = description;
-      return fetch(`http://localhost:3000/users/${currentLogin}`, {
+      return fetch(`https://json-server-liskalk.vercel.app/users/${currentLogin}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

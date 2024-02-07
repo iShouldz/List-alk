@@ -35,7 +35,7 @@ const Login = () => {
   const handleLogin = async (data) => {
     console.log(data);
     try {
-      const response = await fetch("http://localhost:3000/users");
+      const response = await fetch("https://json-server-liskalk.vercel.app/users");
       const users = await response.json();
       const user = users.find(
         (user) => user.email === data.email && user.password === data.password

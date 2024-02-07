@@ -30,7 +30,7 @@ const Dashboard = () => {
   const handleUpdateTodoState = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3000/users/${currentLogin}`
+        `https://json-server-liskalk.vercel.app/users/${currentLogin}`
       );
       const users = await response.json();
       if (users.todo !== undefined) {
@@ -55,12 +55,12 @@ const Dashboard = () => {
     };
     console.log(currentLogin);
 
-    fetch(`http://localhost:3000/users/${currentLogin}`)
+    fetch(`https://json-server-liskalk.vercel.app/users/${currentLogin}`)
       .then((response) => response.json())
       .then((user) => {
         user.todo.push(newList);
         console.log(user);
-        return fetch(`http://localhost:3000/users/${currentLogin}`, {
+        return fetch(`https://json-server-liskalk.vercel.app/users/${currentLogin}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
