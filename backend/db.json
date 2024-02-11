@@ -39,8 +39,7 @@
           "name": "RAILS_SECRET_KEY",
           "description": "This is a list I made of the best Star Wars movies. ",
           "todoItems": [
-            "This is a new list",
-            "sexo"
+            "This is a new list"
           ],
           "category": "receitas",
           "id": 0.63151301671419
