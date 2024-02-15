@@ -28,7 +28,9 @@ npx json-server --watch db.json
 
 # Deploy
 
-Deploy realizado na plataforma [Vercel](https://vercel.com/) para fins de demonstração do projeto. Para uso, existe uma conta setada para facilitar a experimentação: login: teste@gmail.com; senha: admin.
+Deploy realizado na plataforma [Vercel](https://vercel.com/) para fins de demonstração do projeto. Para uso, existe uma conta setada para facilitar a experimentação: 
+```login: teste@gmail.com```
+```senha: admin```
 
 # Recursos
 1. [React](https://react.dev)
